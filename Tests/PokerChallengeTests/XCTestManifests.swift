@@ -5,14 +5,12 @@ extension PokerChallengeTests {
     static let __allTests__PokerChallengeTests = [
             ("test_arrayGetOrdered", test_arrayGetOrdered),
         ]
-    }
 }
 
 extension BestHandsTests {
     static let __allTests__BestHandsTests = [
             ("test_getBestPlayerHand_straightFlush", test_getBestPlayerHand_straightFlush),
         ]
-    }
 }
 
 public func allTests() -> [XCTestCaseEntry] {
