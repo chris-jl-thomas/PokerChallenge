@@ -1,7 +1,7 @@
 import XCTest
 @testable import PokerChallenge
 
-final class PokerChallengeTests: XCTestCase {
+final public class PokerChallengeTests: XCTestCase {
     func test_arrayGetOrdered() {
         let array = [Card(suit: .Clubs, value: .Two), Card(suit: .Clubs, value: .Six), Card(suit: .Clubs, value: .Three), Card(suit: .Clubs, value: .Four), Card(suit: .Clubs, value: .Nine), Card(suit: .Clubs, value: .Eight), Card(suit: .Clubs, value: .Queen),]
         XCTAssertEqual(array.getOrdered(), [Card(suit: .Clubs, value: .Queen), Card(suit: .Clubs, value: .Nine), Card(suit: .Clubs, value: .Eight), Card(suit: .Clubs, value: .Six), Card(suit: .Clubs, value: .Four), Card(suit: .Clubs, value: .Three), Card(suit: .Clubs, value: .Two)])

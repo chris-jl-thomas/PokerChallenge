@@ -8,7 +8,7 @@
 import XCTest
 @testable import PokerChallenge
 
-final class BestHandsTests: XCTestCase {
+final public class BestHandsTests: XCTestCase {
     
     func test_getBestPlayerHand_straightFlush() {
         let player = Player(name: "Alan",
