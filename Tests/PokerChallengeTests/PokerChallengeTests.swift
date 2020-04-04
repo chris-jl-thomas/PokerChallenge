@@ -581,5 +581,29 @@ final public class PokerChallengeTests: XCTestCase {
         let hand = getPairHand(player: player, river: array)
         XCTAssertEqual(hand, expected)
     }
+    
+    func test_highestCard() {
+        let player = Player(name: "Alan",
+                            bet: 11.00,
+                            card1: Card(suit: .Hearts, value: .Queen),
+                            card2: Card(suit: .Diamonds, value: .Five))
+        
+        let array = [
+            Card(suit: .Spades, value: .Ace),
+            Card(suit: .Diamonds, value: .Nine),
+            Card(suit: .Clubs, value: .King),
+            Card(suit: .Diamonds, value: .Eight),
+            Card(suit: .Diamonds, value: .Four)]
+        
+        let expected: [Card] = [
+            Card(suit: .Spades, value: .Ace),
+            Card(suit: .Clubs, value: .King),
+            Card(suit: .Hearts, value: .Queen),
+            Card(suit: .Diamonds, value: .Nine),
+            Card(suit: .Diamonds, value: .Eight),
+        ]
+        
+        XCTAssertEqual(getHighestCardHand(player: player, river: array), expected)
+    }
 }
     
