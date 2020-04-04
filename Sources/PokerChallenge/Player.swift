@@ -67,6 +67,11 @@ extension Player {
             return (.twoPair, hand)
         }
         
+        hand = getPairHand(player: self, river: river)
+        if !hand.isEmpty {
+            return (.pair, hand)
+        }
+        
         return (.highest, river)
     }
 }

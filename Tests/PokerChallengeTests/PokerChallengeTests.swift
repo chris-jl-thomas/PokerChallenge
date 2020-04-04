@@ -490,5 +490,96 @@ final public class PokerChallengeTests: XCTestCase {
         let hand = getTwoPairHand(player: player, river: array)
         XCTAssertEqual(hand, expected)
     }
+    
+    func test_pair_fromRiverWithHighCard() {
+        let player = Player(name: "Alan",
+                            bet: 11.00,
+                            card1: Card(suit: .Diamonds, value: .Nine),
+                            card2: Card(suit: .Diamonds, value: .Ace))
+        
+        let array = [
+            Card(suit: .Spades, value: .King),
+            Card(suit: .Hearts, value: .Queen),
+            Card(suit: .Clubs, value: .King),
+            Card(suit: .Diamonds, value: .Eight),
+            Card(suit: .Diamonds, value: .Four)]
+        
+        let expected: [Card] = [
+        Card(suit: .Clubs, value: .King),
+        Card(suit: .Spades, value: .King),
+        Card(suit: .Diamonds, value: .Ace),
+        Card(suit: .Hearts, value: .Queen),
+        Card(suit: .Diamonds, value: .Nine)]
+        
+        let hand = getPairHand(player: player, river: array)
+        XCTAssertEqual(hand, expected)
+    }
+    
+    func test_pair_fromHandAndRiverWithHighCard() {
+        let player = Player(name: "Alan",
+                            bet: 11.00,
+                            card1: Card(suit: .Diamonds, value: .Nine),
+                            card2: Card(suit: .Diamonds, value: .Queen))
+        
+        let array = [
+            Card(suit: .Spades, value: .Ace),
+            Card(suit: .Hearts, value: .Queen),
+            Card(suit: .Clubs, value: .King),
+            Card(suit: .Diamonds, value: .Eight),
+            Card(suit: .Diamonds, value: .Four)]
+        
+        let expected: [Card] = [
+        Card(suit: .Diamonds, value: .Queen),
+        Card(suit: .Hearts, value: .Queen),
+        Card(suit: .Spades, value: .Ace),
+        Card(suit: .Clubs, value: .King),
+        Card(suit: .Diamonds, value: .Nine)]
+        
+        let hand = getPairHand(player: player, river: array)
+        XCTAssertEqual(hand, expected)
+    }
+    
+    func test_pair_fromHandWithHighCard() {
+        let player = Player(name: "Alan",
+                            bet: 11.00,
+                            card1: Card(suit: .Hearts, value: .Queen),
+                            card2: Card(suit: .Diamonds, value: .Queen))
+        
+        let array = [
+            Card(suit: .Spades, value: .Ace),
+            Card(suit: .Diamonds, value: .Nine),
+            Card(suit: .Clubs, value: .King),
+            Card(suit: .Diamonds, value: .Eight),
+            Card(suit: .Diamonds, value: .Four)]
+        
+        let expected: [Card] = [
+        Card(suit: .Diamonds, value: .Queen),
+        Card(suit: .Hearts, value: .Queen),
+        Card(suit: .Spades, value: .Ace),
+        Card(suit: .Clubs, value: .King),
+        Card(suit: .Diamonds, value: .Nine)]
+        
+        let hand = getPairHand(player: player, river: array)
+        XCTAssertEqual(hand, expected)
+    }
+    
+    func test_pair_noPair() {
+        let player = Player(name: "Alan",
+                            bet: 11.00,
+                            card1: Card(suit: .Hearts, value: .Queen),
+                            card2: Card(suit: .Diamonds, value: .Five))
+        
+        let array = [
+            Card(suit: .Spades, value: .Ace),
+            Card(suit: .Diamonds, value: .Nine),
+            Card(suit: .Clubs, value: .King),
+            Card(suit: .Diamonds, value: .Eight),
+            Card(suit: .Diamonds, value: .Four)]
+        
+        let expected: [Card] = []
+        
+        let hand = getPairHand(player: player, river: array)
+        XCTAssertEqual(hand, expected)
+    }
 }
     

@@ -45,7 +45,7 @@ func getFullHouseHand(player: Player?, river: [Card]) -> [Card] {
         card.value != highestValue
     }
     
-    let pairKeys = getPairKeys(cards: rest)
+    let pairKeys = getPairDictionary(cards: rest)
     
     guard pairKeys.count > 0 else { return [] }
     

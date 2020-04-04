@@ -2,7 +2,7 @@ import Foundation
 
 func getTwoPairHand(player: Player?, river: [Card]) -> [Card] {
     let potentialHand = getCards(river: river, hand: player?.hand)
-    let pairKeys = getPairKeys(cards: potentialHand)
+    let pairKeys = getPairDictionary(cards: potentialHand)
     
     guard pairKeys.keys.count >= 2 else {
         return []
@@ -41,7 +41,7 @@ func getTwoPairHand(player: Player?, river: [Card]) -> [Card] {
 
 }
 
-func getPairKeys(cards: [Card]) -> [Value: Int] {
+func getPairDictionary(cards: [Card]) -> [Value: Int] {
     cards.map { card in
         card.value
     }

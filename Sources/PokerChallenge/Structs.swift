@@ -41,5 +41,6 @@ public enum Hand {
     case straight
     case threeOfAKind
     case twoPair
+    case pair
     case highest
 }
