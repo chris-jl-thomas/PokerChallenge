@@ -107,4 +107,29 @@ final public class BestHandsTests: XCTestCase {
         XCTAssertEqual(bestHand.cards, expected)
         XCTAssertEqual(bestHand.type, .fullHouse)
     }
+    
+    func test_bestHand_bestThreeOfAKind() {
+        let player = Player(name: "Alan",
+                            bet: 11.00,
+                            card1: Card(suit: .Diamonds, value: .Seven),
+                            card2: Card(suit: .Diamonds, value: .Eight))
+        
+        let array = [
+            Card(suit: .Hearts, value: .Eight),
+            Card(suit: .Spades, value: .Eight),
+            Card(suit: .Clubs, value: .Nine),
+            Card(suit: .Diamonds, value: .Six),
+            Card(suit: .Hearts, value: .Four)]
+        
+        let expected: [Card] = [
+            Card(suit: .Diamonds, value: .Eight),
+            Card(suit: .Hearts, value: .Eight),
+            Card(suit: .Spades, value: .Eight),
+            Card(suit: .Clubs, value: .Nine),
+            Card(suit: .Diamonds, value: .Seven)]
+        
+        let bestHand = player.getBestHand(river: array)
+        XCTAssertEqual(bestHand.cards, expected)
+        XCTAssertEqual(bestHand.type, .threeOfAKind)
+    }
 }
