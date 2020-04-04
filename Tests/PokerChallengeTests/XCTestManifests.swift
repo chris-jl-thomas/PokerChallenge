@@ -43,12 +43,12 @@ extension PokerChallengeTests {
         ("test_threeOfAKind", test_threeOfAKind),
         ("test_threeOfAKind_fromRiver_highFromHand", test_threeOfAKind_fromRiver_highFromHand),
     ]
-}
 
-public func __allTests() -> [XCTestCaseEntry] {
-    return [
-        testCase(BestHandsTests.__allTests__BestHandsTests),
-        testCase(PokerChallengeTests.__allTests__PokerChallengeTests),
-    ]
+    public func __allTests() -> [XCTestCaseEntry] {
+        return [
+            testCase(BestHandsTests.__allTests__BestHandsTests),
+            testCase(PokerChallengeTests.__allTests__PokerChallengeTests),
+        ]
+    }
 }
 #endif
