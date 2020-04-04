@@ -3,5 +3,6 @@ import XCTest
 import PokerChallengeTests
 
 var tests = [XCTestCaseEntry]()
-tests += PokerChallengeTests.allTests()
+tests += PokerChallengeTests.__allTests()
+
 XCTMain(tests)
