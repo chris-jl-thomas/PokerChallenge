@@ -182,4 +182,29 @@ final public class BestHandsTests: XCTestCase {
         XCTAssertEqual(bestHand.cards, expected)
         XCTAssertEqual(bestHand.type, .pair)
     }
+    
+    func test_bestHand_bestHighest() {
+        let player = Player(name: "Alan",
+                            bet: 11.00,
+                            card1: Card(suit: .Diamonds, value: .Two),
+                            card2: Card(suit: .Diamonds, value: .Eight))
+        
+        let array = [
+            Card(suit: .Hearts, value: .Seven),
+            Card(suit: .Spades, value: .Three),
+            Card(suit: .Clubs, value: .Nine),
+            Card(suit: .Diamonds, value: .Six),
+            Card(suit: .Hearts, value: .Four)]
+        
+        let expected: [Card] = [
+            Card(suit: .Clubs, value: .Nine),
+            Card(suit: .Diamonds, value: .Eight),
+            Card(suit: .Hearts, value: .Seven),
+            Card(suit: .Diamonds, value: .Six),
+            Card(suit: .Hearts, value: .Four)]
+        
+        let bestHand = player.getBestHand(river: array)
+        XCTAssertEqual(bestHand.cards, expected)
+        XCTAssertEqual(bestHand.type, .highest)
+    }
 }

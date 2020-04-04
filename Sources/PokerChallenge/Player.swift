@@ -72,6 +72,6 @@ extension Player {
             return (.pair, hand)
         }
         
-        return (.highest, river)
+        return (.highest, getHighestCardHand(player: self, river: river))
     }
 }
