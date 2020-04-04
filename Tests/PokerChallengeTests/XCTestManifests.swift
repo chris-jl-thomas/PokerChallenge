@@ -11,7 +11,7 @@ public func allTests() -> [XCTestCaseEntry] {
 
 #if os(Linux)
 extension PokerChallengeTests {
-    static var allTests : [(String, PokerChallengeTests -> () throws -> Void)] {
+    static var allTests : [(String, (PokerChallengeTests) -> () throws -> Void)] {
         return [
             ("test_arrayGetOrdered", test_arrayGetOrdered),
         ]
@@ -19,7 +19,7 @@ extension PokerChallengeTests {
 }
 
 extension BestHandsTests {
-    static var allTests : [(String, BestHandsTests -> () throws -> Void)] {
+    static var allTests : [(String, (BestHandsTests) -> () throws -> Void)] {
         return [
             ("test_getBestPlayerHand_straightFlush", test_getBestPlayerHand_straightFlush),
         ]
