@@ -442,5 +442,53 @@ final public class PokerChallengeTests: XCTestCase {
         let hand = getThreeOfAKindHand(player: player, river: array)
         XCTAssertEqual(hand, expected)
     }
+    
+    func test_twoPair_threePossiblePairsTakesHighestTwo() {
+        let player = Player(name: "Alan",
+                            bet: 11.00,
+                            card1: Card(suit: .Diamonds, value: .Queen),
+                            card2: Card(suit: .Diamonds, value: .King))
+        
+        let array = [
+            Card(suit: .Spades, value: .King),
+            Card(suit: .Hearts, value: .Queen),
+            Card(suit: .Clubs, value: .Jack),
+            Card(suit: .Diamonds, value: .Jack),
+            Card(suit: .Diamonds, value: .Four)]
+        
+        let expected: [Card] = [
+        Card(suit: .Diamonds, value: .King),
+        Card(suit: .Spades, value: .King),
+        Card(suit: .Diamonds, value: .Queen),
+        Card(suit: .Hearts, value: .Queen),
+        Card(suit: .Clubs, value: .Jack)]
+        
+        let hand = getTwoPairHand(player: player, river: array)
+        XCTAssertEqual(hand, expected)
+    }
+    
+    func test_twoPair_fromRiver() {
+        let player = Player(name: "Alan",
+                            bet: 11.00,
+                            card1: Card(suit: .Diamonds, value: .Nine),
+                            card2: Card(suit: .Diamonds, value: .Jack))
+        
+        let array = [
+            Card(suit: .Spades, value: .King),
+            Card(suit: .Hearts, value: .Queen),
+            Card(suit: .Clubs, value: .King),
+            Card(suit: .Diamonds, value: .Queen),
+            Card(suit: .Diamonds, value: .Four)]
+        
+        let expected: [Card] = [
+        Card(suit: .Clubs, value: .King),
+        Card(suit: .Spades, value: .King),
+        Card(suit: .Diamonds, value: .Queen),
+        Card(suit: .Hearts, value: .Queen),
+        Card(suit: .Diamonds, value: .Jack)]
+        
+        let hand = getTwoPairHand(player: player, river: array)
+        XCTAssertEqual(hand, expected)
+    }
 }
     

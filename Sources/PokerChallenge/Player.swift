@@ -62,6 +62,11 @@ extension Player {
             return (.threeOfAKind, hand)
         }
         
+        hand = getTwoPairHand(player: self, river: river)
+        if !hand.isEmpty {
+            return (.twoPair, hand)
+        }
+        
         return (.highest, river)
     }
 }
