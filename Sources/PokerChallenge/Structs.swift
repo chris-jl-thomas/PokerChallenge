@@ -33,14 +33,14 @@ public struct Card: Equatable {
     }
 }
 
-public enum Hand {
-    case straightFlush
-    case fourOfAKind
-    case fullHouse
-    case flush
-    case straight
-    case threeOfAKind
-    case twoPair
-    case pair
-    case highest
+public enum Hand: Int {
+    case straightFlush = 9
+    case fourOfAKind = 8
+    case fullHouse = 7
+    case flush = 6
+    case straight = 5
+    case threeOfAKind = 4
+    case twoPair = 3
+    case pair = 2
+    case highest = 1
 }

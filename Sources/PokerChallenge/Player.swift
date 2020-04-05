@@ -7,14 +7,14 @@
 
 import Foundation
 
-public struct Player {
+public struct Player: Equatable {
     
     public let name: String
-    public let bet: Decimal
+    public let bet: Double
     public let card1: Card
     public let card2: Card
 
-    public init(name: String, bet: Decimal, card1: Card, card2: Card) {
+    public init(name: String, bet: Double, card1: Card, card2: Card) {
         self.name = name
         self.bet = bet
         self.card1 = card1

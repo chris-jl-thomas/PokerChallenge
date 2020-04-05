@@ -605,5 +605,102 @@ final public class PokerChallengeTests: XCTestCase {
         
         XCTAssertEqual(getHighestCardHand(player: player, river: array), expected)
     }
+    
+    func test_getAllPlayersWhoBetEnoughToPlay() {
+        let player1 = Player(name: "Alan",
+                             bet: 12.00,
+                             card1: Card(suit: .Hearts, value: .Queen),
+                             card2: Card(suit: .Diamonds, value: .Five))
+        
+        let player2 = Player(name: "Beth",
+                             bet: 10.00,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let player3 = Player(name: "Charles",
+                             bet: 11.00,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let player4 = Player(name: "Donald",
+                             bet: 12.00,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let player5 = Player(name: "Elizabeth",
+                             bet: 11.00,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let allPlayers = [player1, player2, player3, player4, player5]
+        let expectedPlayers = [player1, player4]
+        
+        XCTAssertEqual(allPlayers.getAllPlayersWhoBetEnoughToPlay(), expectedPlayers)
+        
+    }
+    
+    func test_getAllPlayersWhoBetEnoughToPlay_everyonePlays() {
+        let player1 = Player(name: "Alan",
+                             bet: 12.00,
+                             card1: Card(suit: .Hearts, value: .Queen),
+                             card2: Card(suit: .Diamonds, value: .Five))
+        
+        let player2 = Player(name: "Beth",
+                             bet: 12.00,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let player3 = Player(name: "Charles",
+                             bet: 12.00,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let player4 = Player(name: "Donald",
+                             bet: 12.00,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let player5 = Player(name: "Elizabeth",
+                             bet: 12.00,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let allPlayers = [player1, player2, player3, player4, player5]
+        
+        XCTAssertEqual(allPlayers.getAllPlayersWhoBetEnoughToPlay(), allPlayers)
+        
+    }
+    
+    func test_getAllPlayersWhoBetEnoughToPlay_bet0() {
+        let player1 = Player(name: "Alan",
+                             bet: 0,
+                             card1: Card(suit: .Hearts, value: .Queen),
+                             card2: Card(suit: .Diamonds, value: .Five))
+        
+        let player2 = Player(name: "Beth",
+                             bet: 0,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let player3 = Player(name: "Charles",
+                             bet: 0,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let player4 = Player(name: "Donald",
+                             bet: 0,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let player5 = Player(name: "Elizabeth",
+                             bet: 0,
+                             card1: Card(suit: .Hearts, value: .Jack),
+                             card2: Card(suit: .Diamonds, value: .Four))
+        
+        let allPlayers = [player1, player2, player3, player4, player5]
+        
+        XCTAssertEqual(allPlayers.getAllPlayersWhoBetEnoughToPlay(), [])
+        
+    }
 }
     
