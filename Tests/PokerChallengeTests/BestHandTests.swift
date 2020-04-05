@@ -24,7 +24,7 @@ final public class BestHandsTests: XCTestCase {
             Card(suit: .Diamonds, value: .Six)]
         
         XCTAssertEqual(player.getBestHand(river: array).cards, expected)
-        XCTAssertEqual(player.getBestHand(river: array).type, .straightFlush)
+        XCTAssertEqual(player.getBestHand(river: array).hand, .straightFlush)
     }
     
     func test_getBestPlayerHand_flushGotStraightAvailable() {
@@ -48,7 +48,7 @@ final public class BestHandsTests: XCTestCase {
             Card(suit: .Diamonds, value: .Six)]
         
         XCTAssertEqual(player.getBestHand(river: array).cards, expected)
-        XCTAssertEqual(player.getBestHand(river: array).type, .flush)
+        XCTAssertEqual(player.getBestHand(river: array).hand, .flush)
     }
     
     func test_bestHand_fourOfAKind() {
@@ -73,7 +73,7 @@ final public class BestHandsTests: XCTestCase {
         
         let bestHand = player.getBestHand(river: array)
         XCTAssertEqual(bestHand.cards, expected)
-        XCTAssertEqual(bestHand.type, .fourOfAKind)
+        XCTAssertEqual(bestHand.hand, .fourOfAKind)
     }
     
     func test_bestHand_bestFullHouse() {
@@ -98,7 +98,7 @@ final public class BestHandsTests: XCTestCase {
         
         let bestHand = player.getBestHand(river: array)
         XCTAssertEqual(bestHand.cards, expected)
-        XCTAssertEqual(bestHand.type, .fullHouse)
+        XCTAssertEqual(bestHand.hand, .fullHouse)
     }
     
     func test_bestHand_bestThreeOfAKind() {
@@ -123,7 +123,7 @@ final public class BestHandsTests: XCTestCase {
         
         let bestHand = player.getBestHand(river: array)
         XCTAssertEqual(bestHand.cards, expected)
-        XCTAssertEqual(bestHand.type, .threeOfAKind)
+        XCTAssertEqual(bestHand.hand, .threeOfAKind)
     }
     
     func test_bestHand_bestTwoPair() {
@@ -148,7 +148,7 @@ final public class BestHandsTests: XCTestCase {
         
         let bestHand = player.getBestHand(river: array)
         XCTAssertEqual(bestHand.cards, expected)
-        XCTAssertEqual(bestHand.type, .twoPair)
+        XCTAssertEqual(bestHand.hand, .twoPair)
     }
     
     func test_bestHand_bestPair() {
@@ -173,7 +173,7 @@ final public class BestHandsTests: XCTestCase {
         
         let bestHand = player.getBestHand(river: array)
         XCTAssertEqual(bestHand.cards, expected)
-        XCTAssertEqual(bestHand.type, .pair)
+        XCTAssertEqual(bestHand.hand, .pair)
     }
     
     func test_bestHand_bestHighest() {
@@ -198,6 +198,6 @@ final public class BestHandsTests: XCTestCase {
         
         let bestHand = player.getBestHand(river: array)
         XCTAssertEqual(bestHand.cards, expected)
-        XCTAssertEqual(bestHand.type, .highest)
+        XCTAssertEqual(bestHand.hand, .highest)
     }
 }

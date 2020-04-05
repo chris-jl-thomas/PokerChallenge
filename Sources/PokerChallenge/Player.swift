@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Player: Equatable {
+public struct Player: Equatable, Hashable {
     
     public let name: String
     public let bet: Double
@@ -29,49 +29,49 @@ public struct Player: Equatable {
 
 
 extension Player {
-    func getBestHand(river: [Card]) -> (type: Hand, cards: [Card]) {
-        var hand = river
+    func getBestHand(river: [Card]) -> BestHand {
+        var cards = river
         
-        hand = getStraightFlush(player: self, river: river)
-        if !hand.isEmpty {
-            return (.straightFlush, hand)
+        cards = getStraightFlush(player: self, river: river)
+        if !cards.isEmpty {
+            return BestHand(cards: cards, hand: .straightFlush)
         }
         
-        hand = getFourOfAKind(player: self, river: river)
-        if !hand.isEmpty {
-            return (.fourOfAKind, hand)
+        cards = getFourOfAKind(player: self, river: river)
+        if !cards.isEmpty {
+            return BestHand(cards: cards, hand: .fourOfAKind)
         }
         
-        hand = getFullHouseHand(player: self, river: river)
-        if !hand.isEmpty {
-            return (.fullHouse, hand)
+        cards = getFullHouseHand(player: self, river: river)
+        if !cards.isEmpty {
+            return BestHand(cards: cards, hand: .fullHouse)
         }
         
-        hand = getBestFlushHand(player: self, river: river)
-        if !hand.isEmpty {
-            return (.flush, hand)
+        cards = getBestFlushHand(player: self, river: river)
+        if !cards.isEmpty {
+            return BestHand(cards: cards, hand: .flush)
         }
         
-        hand = getStraightHand(player: self, river: river)
-        if !hand.isEmpty {
-            return (.straight, hand)
+        cards = getStraightHand(player: self, river: river)
+        if !cards.isEmpty {
+            return BestHand(cards: cards, hand: .straight)
         }
         
-        hand = getThreeOfAKindHand(player: self, river: river)
-        if !hand.isEmpty {
-            return (.threeOfAKind, hand)
+        cards = getThreeOfAKindHand(player: self, river: river)
+        if !cards.isEmpty {
+            return BestHand(cards: cards, hand: .threeOfAKind)
         }
         
-        hand = getTwoPairHand(player: self, river: river)
-        if !hand.isEmpty {
-            return (.twoPair, hand)
+        cards = getTwoPairHand(player: self, river: river)
+        if !cards.isEmpty {
+            return BestHand(cards: cards, hand: .twoPair)
         }
         
-        hand = getPairHand(player: self, river: river)
-        if !hand.isEmpty {
-            return (.pair, hand)
+        cards = getPairHand(player: self, river: river)
+        if !cards.isEmpty {
+            return BestHand(cards: cards, hand: .pair)
         }
         
-        return (.highest, getHighestCardHand(player: self, river: river))
+        return BestHand(cards: getHighestCardHand(player: self, river: river), hand: .highest)
     }
 }

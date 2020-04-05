@@ -23,7 +23,7 @@ public enum Value: Int {
     case Ace = 14
 }
 
-public struct Card: Equatable {
+public struct Card: Equatable, Hashable {
     public let suit: Suit
     public let value: Value
     
@@ -43,4 +43,9 @@ public enum Hand: Int {
     case twoPair = 3
     case pair = 2
     case highest = 1
+}
+
+public struct BestHand {
+    let cards: [Card]
+    let hand: Hand
 }

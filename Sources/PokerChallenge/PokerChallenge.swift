@@ -3,6 +3,10 @@ func decideWinner(players: [Player], river: [Card]) -> [Player] {
     
     guard availablePlayers.count > 1 else { return availablePlayers }
     
+    let playersAndBestHand = availablePlayers.toDictionary {
+        $0.getBestHand(river: river)
+    }
+    
     return players
 }
 

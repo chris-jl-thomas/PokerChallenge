@@ -52,3 +52,14 @@ extension Array where Element == Card {
         self.filter { $0.value != value }
     }
 }
+
+extension Array where Element: Hashable {
+    public func toDictionary(with selectValue: (Element) -> BestHand) -> [Element: BestHand] {
+        var dict = [Element: BestHand]()
+        for element in self {
+            let result = selectValue(element)
+            dict[element] = BestHand(cards: result.cards, hand: result.hand)
+        }
+        return dict
+    }
+}
