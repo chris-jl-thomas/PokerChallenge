@@ -63,3 +63,18 @@ extension Array where Element: Hashable {
         return dict
     }
 }
+
+extension Array where Element == Player {
+    func getAllPlayersWhoBetEnoughToPlay() -> [Player] {
+        
+        guard let highestBet = self
+            .filter({ $0.bet > 0 })
+            .max(by: { (left, right) -> Bool in
+                left.bet <= right.bet
+            })?
+            .bet else { return [] }
+    
+        return self.filter { $0.bet == highestBet }
+    }
+}
+

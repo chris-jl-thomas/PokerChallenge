@@ -21,10 +21,10 @@ public struct Player: Equatable, Hashable {
         self.card2 = card2
     }
     
-    
     public var hand: [Card] {
         [card1, card2]
     }
+    
 }
 
 

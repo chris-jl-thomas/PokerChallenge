@@ -45,7 +45,7 @@ public enum Hand: Int {
     case highest = 1
 }
 
-public struct BestHand {
+public struct BestHand: Equatable {
     let cards: [Card]
     let hand: Hand
 }

@@ -7,23 +7,28 @@ func decideWinner(players: [Player], river: [Card]) -> [Player] {
         $0.getBestHand(river: river)
     }
     
-    return players
+    let highestRankedHand = playersAndBestHand
+        .max(by: { (left, right) -> Bool in
+            left.value.hand.rawValue < right.value.hand.rawValue
+        })?
+        .value
+        .hand
+
+    let playersWithHighestRankedHand = playersAndBestHand.filter { (player, hand) -> Bool in
+        hand.hand == highestRankedHand
+    }
+    
+    return compare(playersAndHand: playersWithHighestRankedHand)
 }
 
 func getCards(river: [Card], hand: [Card]?) -> [Card] {
     return river + (hand ?? [])
 }
 
-extension Array where Element == Player {
-    func getAllPlayersWhoBetEnoughToPlay() -> [Player] {
-        
-        guard let highestBet = self
-            .filter({ $0.bet > 0 })
-            .max(by: { (left, right) -> Bool in
-                left.bet <= right.bet
-            })?
-            .bet else { return [] }
-    
-        return self.filter { $0.bet == highestBet }
+func compare(playersAndHand: [Player : BestHand]) -> [Player] {
+    if playersAndHand.count <= 1 {
+        return Array(playersAndHand.keys)
     }
+    
+    return Array(playersAndHand.keys)
 }
